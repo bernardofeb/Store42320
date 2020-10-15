@@ -1,0 +1,93 @@
+<!--[if IE]><style type="text/css">.ui-autocomplete-category{margin-top: -2px}</style><![endif]-->
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin>
+<script src='<PathTo file="htm/js/resource-<StoreLanguage>.js">'></script>
+<script src='<PathTo file="htm/js/store-lib.js">'></script>
+<script>
+var iItensCesta=<QtdCesta>;
+var iQtdProds=0;
+ImgLoadingFC=FC$.PathImg+"loading.gif?cccfc=1";
+ImgOnError=FC$.PathImg+"nd";
+FCLib$.LazyLoadWaitImage=FC$.PathImg+"loading-lazy-load.gif?cccfc=1"; //loading lazy load
+</script>
+
+<div id="offcanvas-overlay" onclick="headerCloseNav();"></div>
+<div id="headerSidenav" class="header-sidenav font-regular">
+  <div class="closebtn" onclick="headerCloseNav();"><img alt="Fechar" id="header-cat-menu-close" src="<PathTo file="images/icon-menu-close.svg">" width="35" height="35"></div>
+  <a href="/" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-home"/></span></a>
+  <a href="<url-sale>" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-sales"/></span></a>
+  <a href="<url-release>" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-releases"/></span></a>
+  <a href="<url-add-product>" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-cart"/></span></a>
+  <a href="<url-account>?orders=1#Orders" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-my-orders"/></span></a>
+  <a href="<url-purchase-list>" rel="nofollow" class="header-sidenav-link header-sidenav-link-shopping-list"><span class="header-sidenav-link-position header-menu-shopping-list"><img64 src="<BaseLoja>images/product-list.svg" width="22" height="22" plain="true"><span><var key="header-cat-my-shopping-list"/></span></span></a>
+  <a href="<url-account>?wishlist=1#Wishlist" rel="nofollow" class="header-sidenav-link"><span class="header-sidenav-link-position header-menu-wishlist"><img64 src="<BaseLoja>images/product-wishlist.svg" width="22" height="22" plain="true"><span><var key="header-cat-my-wishlist"/></span></span></a>
+  <a href="<url-account>?register=1#Register" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-register"/></span></a>
+  <a href="<url-newsletter>" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-newsletter"/></span></a>
+  <a href="<url-contact>" class="header-sidenav-link"><span class="header-sidenav-link-position"><var key="header-cat-contact-us"/></span></a>
+  <a href="<url-categories>" class="header-sidenav-link"><span class="header-sidenav-link-position"><categorias></span></a>
+  <ListPathCat out="10" id="-5">
+</div>
+
+<div class="HeaderMainbar">
+  <div class="header-mainbar-container">
+  <div onclick="headerOpenNav();" class="menuTopIcon"><img alt="Menu" style="cursor:pointer;" title="Menu" src="<PathTo file="images/ic_menu.svg">" width="28" height="28"></div>
+    <div class="header-mainbar-flex-logo  header-mainbar-container-logo">
+      <a href="<StoreDomain>"><img alt="<NomeLoja>" title="<NomeLoja>" src="<PathTo file="images/logotopo.png">" class="HeaderLogo"></a>
+    </div>
+    <div class="header-mainbar-container-menu">
+      
+      <div>
+        <ul class="HeaderMenuULFC font-regular">
+          <li><a href="<url-release>">Lançamentos</a></li>
+          <li><a href="<url-sale>">Promoções</a></li>
+          <li><a href="<url-account>?orders=1#Orders">Meus Pedidos</a></li>
+          <li><a href="/product-list.ehc?typed=true&text=++">Catálogo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-mainbar-container-all-icons">
+      <div id="header-mainbar-container-search">
+        <img alt="Buscar" onclick="sF$.fnShowSearchBox();sF$.fnSearchInputGetFocus();" src="<PathTo file="images/iconsearch.svg">" width="30" height="30" id="header-mainbar-container-search-icon">
+      </div>
+      <div id="header-mainbar-container-login">
+        <span class="loginInfo" id="fc-loginInfo"></span>
+      </div>
+      <div class="header-mainbar-container-cart">
+        <div class="HeaderBasket">
+          <a onclick="Cart$.fnShowCartCheckout();" style="cursor:pointer;">
+            <img width="30" height="30" src="<PathTo file="images/iconcart.svg">" id="header-cat-cart" alt="Carrinho">
+            <div class="HeaderCartItensPosition"><span id="idCartItemsTop" class="HeaderCartNumberProds"></span></div>
+          </a>
+        </div>       
+      </div>
+    </div>
+  </div>
+
+  <!-- Search box -->
+  <div>
+    <div id="header-mainbar-container-search-result">
+      <div class="header-mainbar-container-search-result-full-position">
+        <div id="header-mainbar-container-search-result-close" onclick="sF$.fnCloseSearchBox()"><img alt="Fechar" id="header-cat-search-close" src="<PathTo file="images/icon-search-close.svg">"></div>
+          <div class="child-header-mainbar header-mainbar-flex-search speech" id="search-box">
+            <form name="TopSearchForm" method="GET" id="autocomplete-form" action="<url-prod>">
+              <input type="hidden" name="<par-typed>" value="true">
+              <input type="text" id="autocomplete" value="<SearchText>" name="<par-text>" class="InputTextBusca" autofocus="autofocus" aria-label="" placeholder="">
+              <img class="header-speech-icon" id="voiceSearch" onclick="sF$.fnStartDictation()" src="<BaseLoja>images/icon-speech.svg?cccfc=1" width="24" height="24" alt="Voice" />
+              <button id="search-button" type="submit" aria-label="Buscar">                     
+                <img src="<BaseLoja>images/iconsearch.svg?cccfc=1" width="22" height="22" alt="Buscar" id="voiceSearchMGlass">
+              </button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="header-space-top"></div>
+
+<!-- Receive Banner Home -->
+<div id="FC-ShowHomeBanners"></div>
+<!-- End Banner Home -->
+
+<!-- Begin Aside - Don't remove -->
+<div class="middle-container">

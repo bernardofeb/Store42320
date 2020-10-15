@@ -1,0 +1,46 @@
+<amp-sidebar id='sidebar' layout="nodisplay" side="left">
+  <amp-img class='amp-close-image' src="<PathTo file="images/ampclose.svg">" width="35" height="35" alt="{{header-close-menu}}" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
+  <amp-list src="/amp-resource.ehc" layout="fixed-height" height="240">
+    <template type="amp-mustache">
+      <nav class="amp-nav">
+        <a href="<PathAMP url="/">"><img64 src="<BaseLoja>images/amp-home.svg" plain="true" width="24" height="24" title="{{header-cat-home}}"> {{header-cat-home}}</a>
+        <a href="<PathAMP url="<url-release>">"><img64 src="<BaseLoja>images/amp-new-releases.svg" plain="true" width="24" height="24" title="{{header-cat-releases}}"> {{header-cat-releases}}</a>
+        <a href="<PathAMP url="<url-sale>">"><img64 src="<BaseLoja>images/amp-offers.svg" plain="true" width="24" height="24" title="{{header-cat-sales}}">{{header-cat-sales}}</a>
+        <a href="<url-advanced-search>"><img64 src="<BaseLoja>images/amp-search-menu.svg" plain="true" title="{{header-search-input-button}}"> {{header-detailed-search}}</a>
+      </nav>
+    </template>
+  </amp-list>
+  <div class="amp-cats">
+    <a href="<PathAMP url="<url-categories>">" class="amp-link-cats"><Categorias></a>
+    <ListPathCat out="13" id="-1">
+  </div>
+</amp-sidebar>
+
+<amp-list src="/amp-resource.ehc" layout="fixed-height" height="360">
+  <template type="amp-mustache">
+
+<header>
+  <div class="container">
+    <div class="amp-header-menu">
+      <button on='tap:sidebar.toggle' class="amp-sidebar-btn" aria-label="{{header-open-menu}}">
+        <amp-img layout="fill" src="<PathTo file="images/amp-icon-menu-open.svg">" alt="{{header-open-menu}}"></amp-img>
+      </button>
+    </div>
+    <div class="amp-header-logo">
+      <a href="<PathAMP url="/">"><amp-img layout="fill" src="<PathTo file="images/amplogotopo.png">" class="amp-header-logo-img" alt="<NomeLoja>"></amp-img></a>
+    </div>
+    <div class="amp-header-cart">
+      <a href="<url-add-product>"><amp-img layout="fill" src="<PathTo file="images/ampiconcart.svg">" alt="{{header-cat-cart}}"></amp-img></a>
+    </div>
+    <div class="amp-search-container">
+      <form name="TopSearchForm" method="GET" target="_top" action="<url-prod>" accept-charset="UTF-8">
+        <input type="hidden" name="<par-typed>" value="true">
+        <input type="hidden" name="useamp" value="true">
+        <input type="text" value="<SearchText>" name="<par-text>" class="amp-search-input" placeholder="{{header-search-input}}" aria-label="{{header-search-input}}">
+        <button type="submit" class="amp-search-btn" aria-label="{{header-search-input-button}}"><img64 src="<BaseLoja>images/amp-search.svg" plain="true" title="{{header-search-input-button}}"></button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<section class="container amp-main">

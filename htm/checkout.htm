@@ -1,0 +1,108 @@
+<div id="StepCheckout"></div>
+<div class="FCCheckoutLogin"><Login></div>
+<div class="FCCheckoutMain">  
+  <div id="idChkCol1FC" class="FCRegisterChk">
+    <Register>
+  </div>
+  <div id="idChkCol2FC" class="FCFreightChk">
+    <span id="idChkIniCol2FC"></span>
+    <div id="idChkTagsCol2FC"><OrderCompletion><Freight><Payment></div>
+  </div>
+  <div id="idChkCol3FC" class="FCCartChk"><Cart></div>
+  <div id="idChkBottomFC"></div>
+</div>
+<div id="idChkBottomFC" class="FCChkOrderConfirmationFloat"><OrderConfirmation></div>
+<script>
+var bShowCupomCheckout=true;
+
+function FuncChkRegisterEnd(){
+  if(F$.Step==2){
+    window.onscroll=null;
+    document.getElementById('idChkTagsCol2FC').style.position='relative';
+    document.getElementById('idChkExtCartFC').style.position='relative';
+  }
+  else if(F$.Step==1){
+    if(bShowCupomCheckout)fnShowCupom();  //Call function displaying field for coupon
+  }
+
+  //Order confirmation
+  if(F$.Step==2){
+    jQuery('#idTitCartFC').css({'background':'none', 'color' : '#4d4d4d', 'text-transform': 'inherit', 'padding-left': '15px'});
+  }
+
+  //Checkout Steps
+  fnShowStep(F$.Step);
+}
+
+//Checkout Steps
+function fnShowStep(iStep){
+  console.log("iStep="+ iStep);
+  var oSteps=F$.GetID("StepCheckout");
+  if(oSteps){
+    var sContStep="";
+    if(iStep==0)sContStep="<ul class='fc-checkout-steps fc-checkout-steps-arrow'><li class='fc-checkout-steps-current'><em>"+ rk("checkout-steps-identification") +"</em></a></li><li><a href='#'>"+ rk("checkout-steps-payment") +"</a></li><li><a href='#'>"+ rk("checkout-steps-confirmation") +"</a></li></ul>";
+    else if(iStep==1)sContStep="<ul class='fc-checkout-steps fc-checkout-steps-arrow'><li><a href='#'>"+ rk("checkout-steps-identification") +"</a></li><li class='fc-checkout-steps-current'><em>"+ rk("checkout-steps-payment") +"</em></li><li><a href='#'>"+ rk("checkout-steps-confirmation") +"</a></li></ul>";
+    else if(iStep==2)sContStep="<ul class='fc-checkout-steps fc-checkout-steps-arrow'><li><a href='#'>"+ rk("checkout-steps-identification") +"</a></li><li><a href='#'>"+ rk("checkout-steps-payment") +"</a></li><li class='fc-checkout-steps-current'><em>"+ rk("checkout-steps-confirmation") +"</em></li></ul>";
+    oSteps.innerHTML=sContStep;
+  }
+}
+
+function FuncChkRegisterBegin(){
+  if(F$.Step==1 && (F$.FreightValue=='' || F$.FreightValue==null)){
+    F$.GetID("idChkPaymentFC").innerHTML="<div id=idChkPaymentIntFC class=EstChkDiv><div id=idTitPaymentFC class=EstTitCheckoutFC>"+ rk("checkout-steps-payment-title") +"</div><p>"+ rk("checkout-steps-payment-text") +"</p></div>";
+  }
+  if(F$.Step==1){
+   document.getElementById('idChkBottomFC').style.position='fixed';
+   document.getElementById('idChkBottomFC').style.bottom='0px!important';
+  }
+}
+
+//Checkout Coupon
+function FuncChkCartEnd(){
+  if(bShowCupomCheckout && F$.Step==1)fnShowCupom();  //Call function displaying field for coupon
+}
+
+function fnShowCupom(){
+  var oCupom=document.getElementById("idCupom");
+  if(!oCupom && F$.Step==1){ //If you already have coupon in the calculation does not display coupon field. Only displays in step 1
+    var oInsert=document.getElementById("idCartItemsFC");
+    if(oInsert){
+      var oNewElement=document.createElement("tr");
+      oNewElement.setAttribute("id","CupomCheckout");
+      oNewElement.innerHTML="<td colspan='2' class='EstTabPedidoTotal'><div id='DivCupom'><div class='FCCartCupomLabel-checkout'>"+ rk("checkout-enter-coupon-title") +":</div><div class='FCCartCupomInputCheckout'><input type='text' name='"+ (FCLib$.fnUseEHC()?"coupon":"cupom") +"' id='Cupom' maxlength='30' class='FCCartCupomInput'><button id='FCCartCupomButCheckout' onclick='fnCupomApply()'>"+ rk("checkout-enter-coupon-button") +"</button></div></div></td>";
+      fnInsertAfter(oNewElement,oInsert);
+    }
+  }
+}
+
+function fnCupomApply(){
+  var oCupom=document.getElementById("Cupom");
+  if(oCupom){
+    var sCupom=oCupom.value;
+    if(sCupom!=""){AjaxExecFC(FCLib$.uk("url-contact"),(FCLib$.fnUseEHC()?"coupon":"cupom")+"="+ sCupom,false,fnCallBackCupom);}
+  }
+}
+
+function fnCallBackCupom(){
+  F$.fnUpdateCart(); //Update cart
+  setTimeout(
+    function(){
+      var oCupom=document.getElementById("idCupom");
+      if(!oCupom){
+        //If upgraded cart and did not have coupon in the calculation it is because the coupon was invalid
+        var oDivCupom=document.getElementById("DivCupom");
+        if(oDivCupom){
+          var oNewElement=document.createElement("div");
+          oNewElement.setAttribute("id","MsgErrCupom");
+          oNewElement.innerHTML="<div style='color:#FF0000;padding:5px;font-size:13px;'>"+ rk("checkout-enter-invalid-coupon") +"</div>";
+          fnInsertAfter(oNewElement,oDivCupom);
+        }
+      }
+    }
+  ,500); 
+}
+
+function fnInsertAfter(newNode,referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode,referenceNode.nextSibling);
+}
+</script>

@@ -1,0 +1,31 @@
+/* Configurações gerais da loja */
+
+var oStoreConfig$={
+  "Product_Badges_Home_ProductList":[true,"Mostra badges na home e lista de produtos."],
+  "History_Page":[true,"Mostra histórico de páginas visitadas."],
+  "Product_SoldOut_Badge_ProductList":[true,"Mostra badge de produto esgotado na lista de produtos."],
+  "Product_SoldOut_Badge_SubProduct_ProductList":[true,"Mostra badge de subproduto esgotado na lista de produtos."],
+  "Change_Image_Hover_Home_ProductList":[true,"Ao passar o mouse, altera imagem do produto na home e lista de produtos."],
+  "Header_Voice_Search":[true,"Mostra busca por voz no campo de busca do topo."],
+  "News_Voice_Search":[true,"Mostra busca por voz na página de notícias."],
+  "Popup_Dont_Go":[false,"Mostra popup antes do visitante sair da página."],
+  "Product_Details_Show_Stock":[true,"Mostra estoque na página de detalhes dos produtos."],
+  "Product_Details_Show_Date_Promotion":[true,"Mostra data de término de promoção na página de detalhes dos produtos."],
+  "Product_Details_Fixed_Container":[true,"Fixa bloco de informações principais do produto ao rolar a página."],
+  "Home_Slideshow":[true,"Mostra banners rotativos na home."],
+  "Footer_Cookie_Policy":[false,"Mostra alerta política de cookies."],
+  "Next_page_button":[1,"Exibe botão para autopaginação. Informe 0 para desabilitar ou digite a quantidade de páginas de produtos a partir da qual será exibido botão para ver mais produtos."],
+  "Show_wishlist":[false,"Exibe lista de desejos."],
+  "Recommend_Product":[true,"Mostra link na página de detalhes para recomendar o produto"],
+  "One_parcel_discount":[0,"Desconto % nas compras à vista"],
+  "Interest_1_parcel":[0,"Juros % nas vendas com parcelamento em 1x"],
+  "Interest_2_parcels":[0,"Juros % nas vendas com parcelamento em 2x"],
+  "Interest_3_parcels":[0,"Juros % nas vendas com parcelamento em 3x"],
+  "Interest_4_parcels":[0,"Juros % nas vendas com parcelamento em 4x"],
+  "Interest_5_parcels":[0,"Juros % nas vendas com parcelamento em 5x"],
+  "Interest_6_parcels":[0,"Juros % nas vendas com parcelamento em 6x"],
+  "Interest_7_parcels":[0,"Juros % nas vendas com parcelamento em 7x"],
+  "Interest_8_parcels":[0,"Juros % nas vendas com parcelamento em 8x"],
+  "Interest_9_parcels":[0,"Juros % nas vendas com parcelamento em 9x"],
+  "Interest_10_parcels":[0,"Juros % nas vendas com parcelamento em 10x"]
+};

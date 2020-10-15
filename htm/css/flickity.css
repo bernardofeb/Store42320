@@ -1,0 +1,81 @@
+.flickity-enabled {position: relative;}
+.flickity-enabled:focus { outline: none; }
+.flickity-viewport {overflow: hidden; position: relative; height: 100%;}
+.flickity-slider {position: absolute; width: 100%; height: 100%;}
+.flickity-enabled.is-draggable {-webkit-tap-highlight-color: transparent; tap-highlight-color: transparent; -webkit-user-select: none; -ms-user-select: none; user-select: none;}
+.flickity-enabled.is-draggable .flickity-viewport {cursor: move; cursor: -webkit-grab; cursor: grab;}
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {cursor: -webkit-grabbing; cursor: grabbing;}
+.flickity-prev-next-button {position: absolute; top: 45%; width: 36px; height: 36px; border: none; cursor: pointer; -webkit-transform: translateY(-50%); transform: translateY(-50%); opacity: 0.8; filter: alpha(opacity=80);}
+.flickity-prev-next-button:hover {background: transparent; opacity: 1;}
+.flickity-prev-next-button:active {opacity: 0.6; filter: alpha(opacity=60);}
+.flickity-prev-next-button.previous {left: -28px; background:url('../../images/icon-grid-arrow-prev.svg') no-repeat center;}
+.flickity-prev-next-button.next {right: -28px; background:url('../../images/icon-grid-arrow-next.svg') no-repeat center;}
+.flickity-prev-next-button:disabled {opacity: 0.3; filter: alpha(opacity=30); cursor: auto;}
+.flickity-prev-next-button svg {display:none;}
+.flickity-prev-next-button .arrow {fill:#000;}
+.flickity-prev-next-button.no-svg {color:#000;}
+.flickity-page-dots {position: absolute; width: 100%; bottom: 5px; padding: 0; margin: 0; list-style: none; text-align: center; line-height: 1;}
+.flickity-rtl .flickity-page-dots { direction: rtl; }
+.flickity-page-dots .dot {display: inline-block; width: 10px; height: 10px; margin: 0 5px; background: #fff; border:1px solid #ababab; border-radius: 50%; cursor: pointer;}
+.flickity-page-dots .dot.is-selected {background: #ff4a4a; border:1px solid #ff4a4a; }
+
+/* Produto Home Largura de 1366px */
+.carousel2 {width:95%; max-width:1256px; margin:30px auto 0 auto;}
+.carousel-cell2 {width: 22.6%; height:420px; margin:0 0 0 0; padding:15px; text-align: center;}
+.carousel-cell2.is-selected img {opacity: 1;}
+
+/* Media Queries */
+@media (max-width: 1280px) {
+  .carousel2 {max-width:1200px;}
+}
+
+@media (max-width: 1024px) {
+  .flickity-prev-next-button {width: 24px; height: 32px;}
+  .flickity-prev-next-button.previous {left:-12px;}
+  .flickity-prev-next-button.next {right:-12px;}
+  .carousel-cell2 {width: 30.5%; height:350px; padding:0 15px;}
+}
+
+@media (max-width: 812px) {
+  .carousel-cell2 {width: 29.7%;}
+}
+
+@media (max-width: 768px) {
+  .flickity-prev-next-button {top: 35%;}
+  .flickity-prev-next-button.previous {left:-12px;}	
+  .carousel-cell2 {width: 30.6%; height:350px; padding:0 10px;}	
+}
+
+@media (max-width: 736px) {
+  .flickity-prev-next-button.previous {left:-7px;}
+  .flickity-prev-next-button.next {right:-7px;}
+}
+
+@media (max-width: 667px) {
+  .carousel-cell2 {width: 30.2%; height:360px;}	
+}
+
+@media (max-width: 568px) {
+  .carousel-cell2 {width: 46.2%; height:auto;}
+}
+
+@media (max-width: 414px) {
+  .flickity-prev-next-button {top: 37%;}
+  .carousel-cell2 {width: 45%;}	
+}
+
+@media (max-width: 375px) {
+  .carousel-cell2 {width: 44.5%;}	
+}
+
+@media (max-width: 360px) {
+  .flickity-prev-next-button {top: 57%;}
+  .carousel-cell2 {width: 94.5%;}
+}
+
+@media (max-width: 320px) {
+  .carousel-cell2 {width: 93.5%;}	
+}
+@media (min-width: 1025px) and (max-width: 1168px) {
+.carousel-cell2 {padding:15px 12px;}
+}

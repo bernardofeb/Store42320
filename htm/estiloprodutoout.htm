@@ -1,0 +1,27 @@
+<p255>
+<div class="DivHomeProd" <DataAttribute> id="DivProd<IDProduto>">
+  <div class="DivHomeImagemProd" id="DivImagemProdDouble<IDProduto>" onclick="NoCascate('<URLProd>');"></div>
+  <div class="DivHomeNomeProd" onclick="NoCascate('<URLProd>');">
+    <span class="HomeNomeProd text-overflow font-regular"><NomeProd></span>
+    <span class="nomeAutorBoxProd"><Adicional3></span>
+  </div>
+  <div class="DivHomePriceProd" style="white-space:nowrap;" onclick="NoCascate('<URLProd>');">
+    <div id="idProdPrice<IDProduto>"></div> 
+    <div class="PriceAVistaLista" id="ProdDesc<IDProduto>"></div>
+  </div>
+  <div class="home-spy-details-container">
+
+   <div class="buyButtonBoxProd"><FormProd><LinkComprar></FormProd></div>
+
+    <div class="DivHomeSpy" onclick='bCascate=true;FCLib$.OpenRWD("<url-prod-id><IDProduto>&sty=9&int=1","Disp","width=700,height=700")'><a href="#Spy" rel="nofollow"><img  src="<BaseLoja>images/icon-preview.svg?cccfc=1" width="25" height="25" alt="Fast Preview" title="Fast Preview"></a></div>
+    <div class="DivHomeDetails"><a href="<URLProd>"><img  src="<BaseLoja>images/icon-more-details.svg?cccfc=1" width="25" height="25" alt="More details" title="More details"></a></div>
+    <!--<div class="DivHome-wishlist"><wishlist></div>-->
+  </div>
+</div>
+<script>
+FCLib$.onReady(function(){
+  sF$.fnChangeImages("<ImagemProdPri>","<ImagemProdDet>","<URLProd>","<IDProduto>","<NomeProdUA>");
+  sF$.fnShowProd(<PrecoNum>,<PrecoOri>,'<CodProd>',"",<IDProduto>)
+});
+</script>
+</p255>
